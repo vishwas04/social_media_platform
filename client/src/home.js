@@ -33,32 +33,131 @@ class Login extends Component
       this.handleImagePreview = this.handleImagePreview.bind(this);
       this.handleImagePreview1 = this.handleImagePreview1.bind(this);
       this.handleUpload = this.handleUpload.bind(this);
+      this.handleserch = this.handleserch.bind(this);
+      
       // this.opt=this.opt.bind(this);
       // this.corona=this.corona.bind(this);
     }
     componentDidMount(){
       this.setState({user: this.props.location.state.name});
     }
+    handleserch(e)
+    {
+      const myNode = document.getElementById("follow_req");
+        while (myNode.firstChild) 
+        {
+          // console.log(myNode.lastChild.id);
+          
+          myNode.removeChild(myNode.lastChild);
+          
+        }
+      fetch('http://localhost:8080/search_request',
+      {
+            method:'POST',
+            headers : {
+             'Content-Type': 'application/json',
+             'Accept': 'application/json'
+            },
+            body:JSON.stringify({r:e.target.value})
+      })
+      .then(responseJson => responseJson.json())
+      .then(data =>{    
+      if (e.target.value!="")
+        {
+          var names=[] ;
+          var ids=[] ;
+          
+          for(var i=0;data[i];i++)
+          {
+            console.log(data[i].id in ids);
+            if (!(data[i][0].id in ids))
+            {
+              names.push(data[i][0].name);
+              ids.push(data[i][0].id);
+            }
+            
+          }
+          // document.getElementById("result").innerHTML="";
+          for(var i=0;ids[i];i++)
+          {
+            var d =document.createElement("div");
+            d.id=ids[i];
+            d.style.cssText="position:absoulte ; border-style: solid ;"
+            var d_name =document.createElement("p");
+            d_name.style.cssText="position:absoulte"
+            var d_id =document.createElement("p");
+            d_id.style.cssText="position:absoulte;"
+            d_name.innerHTML = "NAME :" + names[i];
+            d_id.innerHTML = "ID :" +ids[i];
+            var follow_button = document.createElement('button');
+            follow_button.id = "follow_button"+i.toString();
+            follow_button.innerHTML="+";
 
+            follow_button.onclick  =(e) =>
+            {
+                // console.log(this.state.user,e.target.parentNode.id);
+                var f = (this.state.user).concat("=",e.target.parentNode.id)
+                const options = {
+                method: 'POST',
+                body:JSON.stringify({f1:f})
+                };
+                fetch('http://localhost:8080/follows', options)
+                .then((responseJson) =>{return responseJson.json()})
+                .then((r) =>
+                {
+                alert("follow")
+                })
+              .catch((error) => {
+                console.log("error")
+              });
+            }
+
+            d.appendChild(d_name);
+            d.appendChild(d_id);
+            // d.appendChild(document.createElement("p"));
+            d.appendChild(follow_button);
+            
+            var res = document.getElementById("follow_req");
+            res.appendChild(d);
+
+            // console.log(data[i][0].name);
+            console.log(ids[i]);
+            
+          }
+        }
+      else
+        {
+          // document.getElementById("result").innerHTML="";
+        }
+      });
+    }
     handleUpload()
     {
       const fileInput = document.getElementById('home_file') ;
       const formData = new FormData();
       formData.append("image", fileInput.files[0]);
+      formData.append("user", this.props.location.state.name);
       const options = {
       method: 'POST',
       body: formData,
     };
     
     fetch('http://localhost:8080/post', options)
-    .then((responseJson) =>
+    .then((responseJson) =>{return responseJson.json()})
+    .then((r) =>
     {
-      console.log("error")
-      console.log(auth.isAuthenticated,"dwdwdwd");
+     
+      console.log(auth.isAuthenticated(),"dwdwdwd");
       
       const { match, location, history } = this.props;
       history.push("/home", { name: this.props.location.state.name});
-      alert("posted")
+      var final_slide=document.createElement("img");
+      final_slide.src="data:image/png;base64;,".concat(r.data);
+      final_slide.style.cssText="position:absolute;width:700px;height:500px";
+
+      document.body.appendChild(final_slide);
+      console.log(final_slide);
+      // alert("posted")
     })
     .catch((error) => {
       console.log("error")
@@ -104,21 +203,28 @@ class Login extends Component
               
               
     
-    <div style={{ height:"1350px" }} >
-                
-                <Sidebar/>
-                  <h1 id="username">WELCOME</h1>
-                  <h1 id="username">{this.props.location.state.name}</h1>
-                  <input id="home_file" type="file" className="button-78" accept="image/*" name="image" onChange={this.handleImagePreview1}  multiple/>    
+    <div style={{ height:"3000px" }} >
+    <Sidebar/>
                   <h3   ref={this.setRef}></h3>
-                  <button id="home_prev" type="button" className="button-78"  onClick={this.handleImagePreview}>Preview</button>
-                  <button id="home_submit" type="button" className="button-78" onClick={this.handleUpload} >UPLddOAD</button>
-                  <img id="home_img" className="button-62"  src={this.state.file} alt="Upload image -> Preview -> Build" width="500" height="600"/>
                   <img id="man1" src={man1} alt="p1"/>
                   <img id="man2" src={man1} alt="p2"/>
                   <img id="h1" src={h1} alt="p3"/>
-              
-            <img id="h2" src={h1} alt="p4"/>
+               
+                <div style={{ position:'fixed',height:"40%",width:"25%",bottom:"0px",right:"0px", background : "linear-gradient(300deg,red,orangered 90%)"}} >
+                  <h1 id="username">WELCOME</h1>
+                  <h1 id="username">{this.props.location.state.name}</h1>
+                  <input id="home_file" type="file" className="button-78" accept="image/*" name="image" onChange={this.handleImagePreview1}  multiple/>    
+                  <button id="home_prev" type="button" className="button-78"  onClick={this.handleImagePreview}>Preview</button>
+                  <button id="home_submit" type="button" className="button-78" onClick={this.handleUpload} >Upload</button>
+                  <img id="home_img" className="button-62"  src={this.state.file} alt="Upload image -> Preview -> Upload" width="300" height="200"/>
+                </div>
+                <br></br>
+                <div id="follow" style={{ top:"60%" ,width:"25%", background : "linear-gradient(300deg,red,orangered 90%)"}} >
+                  <input id="home_search" name="home_search_name" onChange={this.handleserch}  />   
+                  <div id="follow_req">
+                  </div> 
+                </div>
+                <img id="h2" src={h1} alt="p4"/>
                   <img id="h3" src={h1} alt="p5"/>
               {/* <input id="home_input" type="text" onChange={this.call_search} autocomplete="off"/>
               <label id="lable_input" htmlFor="home_input"alt="FIND BLOOD DONOR" placeholder="FIND BLOOD DONOR"></label>

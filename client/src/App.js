@@ -32,7 +32,7 @@ class App extends Component
     <PrivateRoute exact path="/vidoes" component={Video}/>
     <PrivateRoute exact path="/aboutus" component={Aboutus}/>
     <PrivateRoute exact path="/contact" component={Contactus}/>
-    <Route exact path="/logout" component={Logout}/>
+    <PrivateRoute exact path="/logout" component={Logout}/>
     </Switch>
                
                );

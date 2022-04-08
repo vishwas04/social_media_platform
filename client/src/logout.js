@@ -10,8 +10,9 @@ class Logout extends Component
     {
         super(props,context);
         const { match, location, history } = this.props;
+        console.log("home"+auth.isAuthenticated());
         auth.logout(()=>{
-            console.log("home");
+            console.log("home"+auth.isAuthenticated());
             history.push("/");
           })
     }
