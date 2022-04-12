@@ -23,16 +23,27 @@ class App extends Component
         
         return(
                
+    // <Switch>
+    // <Route exact path="/" component={Login}/>
+    // <PrivateRoute exact path="/home" component={Home} />
+    // <Route exact path="/signup" component={Signup}/>
+    // <Route exact path="/deregister" component={Deregister}/>
+    // <PrivateRoute exact path="/images" component={Images}/>
+    // <PrivateRoute exact path="/vidoes" component={Video}/>
+    // <PrivateRoute exact path="/aboutus" component={Aboutus}/>
+    // <PrivateRoute exact path="/contact" component={Contactus}/>
+    // <PrivateRoute exact path="/logout" component={Logout}/>
+    // </Switch>
     <Switch>
     <Route exact path="/" component={Login}/>
-    <PrivateRoute exact path="/home" component={Home} />
+    <Route exact path="/home" component={Home} />
     <Route exact path="/signup" component={Signup}/>
     <Route exact path="/deregister" component={Deregister}/>
-    <PrivateRoute exact path="/images" component={Images}/>
-    <PrivateRoute exact path="/vidoes" component={Video}/>
-    <PrivateRoute exact path="/aboutus" component={Aboutus}/>
-    <PrivateRoute exact path="/contact" component={Contactus}/>
-    <PrivateRoute exact path="/logout" component={Logout}/>
+    <Route exact path="/images" component={Images}/>
+    <Route exact path="/vidoes" component={Video}/>
+    <Route exact path="/aboutus" component={Aboutus}/>
+    <Route exact path="/contact" component={Contactus}/>
+    <Route exact path="/logout" component={Logout}/>
     </Switch>
                
                );

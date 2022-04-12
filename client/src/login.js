@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component } from "react";
-import heart1 from '/Users/vishwas/Desktop/social_media_client/client/src/images/red1.jpg'
+import heart1 from '/Users/vishwas/Desktop/social_media_client/client/src/logo_twitter.png'
 import auth from "./auth"
 import { withRouter } from "react-router";
 import Cookies from "js-cookie";
@@ -98,8 +98,8 @@ class Login extends Component
       return (
               
               
-    <div className="full" >
-            <img id="login_img" src={heart1} />
+    <div  className="full" >
+            <img style={{position:"fixed", top:"40%",left:"20px" ,width:"50%"}} id="login_img" src={heart1} />
           <br/><br/>
         <div className="absolute">
           <h1>LOGIN</h1>

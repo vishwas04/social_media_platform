@@ -20,11 +20,12 @@ lable
         {
             font-size:40px;
             font-family:cursive;
+            color: white;
         }
         h2
         {
             font-size:40px;
-            font-family:cursive;
+            font-family:cursive; color: white;
         }
         div.absolute {
           position: absolute;
@@ -34,7 +35,7 @@ lable
           margin: auto;
           width: 30%;
           padding: 25px;
-          background-image: linear-gradient(to right, black, orangered);
+          background-image: linear-gradient(to right, black, blue);
         }
         div.absolute1 {
           position: absolute;
@@ -46,6 +47,6 @@ lable
           width: 30%;
           
           padding: 25px;
-           background-image: linear-gradient(to right, black, orangered);
+           background-image: linear-gradient(to right, black, blue);
         }
 

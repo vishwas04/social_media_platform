@@ -22,8 +22,8 @@ class Deregister extends Component
 
         submit_fun(e)
         {
-            
-          fetch('http://localhost:8001/delete',{
+          var loing_res = (this.einput.value).concat("=",this.pinput.value)
+          fetch('http://localhost:8080/delete',{
             method:'POST',
             headers : {
              'Content-Type': 'application/json',

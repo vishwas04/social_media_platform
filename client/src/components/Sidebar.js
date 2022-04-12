@@ -7,37 +7,19 @@ import * as Icons from 'react-icons/io5';
 
 function Sidebar() {
 
+    // this.setState({user: this.props.location.state.name});
+    console.log("side",this.props.location.state.name);
     const[sidebarState,setsidebar]=useState(false);
     const toggleSidebar=()=>setsidebar(!sidebarState);
 
     return(
     <div className='fullSidebar'>
         <div className ='bar'>
-            <Link to='#' className='menuButton'>
-                <Icons.IoMenuSharp color='#fff' onMouseOver={toggleSidebar}/>
-            </Link>
-            <Link to='/contact' className='topButtons' style={{ textDecoration: 'none' }}><Icons.IoChatbubblesSharp color='#fff'/>CONTACT</Link>
+            <Link to='/deregister' className='topButtons' style={{ textDecoration: 'none' }}><Icons.IoChatbubblesSharp color='#fff'/>DEREGISTER</Link>
             <Link to='/aboutus' className='topButtons' style={{ textDecoration: 'none' }}><Icons.IoInformationCircle color='#fff'/>ABOUT US</Link>
             <Link to='/logout' className='topButtons' style={{ textDecoration: 'none',position: 'absolute', right: 20 }}><Icons.IoLogOutOutline color='#fff'/>Logout</Link>
         </div>
-        <nav className={sidebarState ? 'menu open':'menu'}>
-            <ul className='full-menu' onClick={toggleSidebar}>
-                <li className='close-menu'> 
-                    <Link to='#' className='closeButton'><Icons.IoCloseCircle color='#fff'/></Link>
-                </li>
-                {SidebarContents.map((option,id)=>{
-                    return(
-                        <li key={id} className={option.className}>
-                            <Link to={option.path}>
-                                {option.icon}
-                                <span>{option.title}</span>
-                            </Link>
-                        </li>
-                    );
-                  }
-                )}
-            </ul>
-        </nav>
+        
     </div>
     );
 }
