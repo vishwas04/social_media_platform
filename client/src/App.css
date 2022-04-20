@@ -35,7 +35,7 @@ lable
           margin: auto;
           width: 30%;
           padding: 25px;
-          background-image: linear-gradient(to right, black, blue);
+          background-image: linear-gradient(to right, rgb(255, 162, 0), rgb(255, 251, 0));
         }
         div.absolute1 {
           position: absolute;
@@ -47,6 +47,6 @@ lable
           width: 30%;
           
           padding: 25px;
-           background-image: linear-gradient(to right, black, blue);
+           background-image: linear-gradient(to right, rgb(255, 0, 0), rgb(217, 255, 0));
         }
 

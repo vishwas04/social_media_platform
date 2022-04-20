@@ -8,7 +8,7 @@ import * as Icons from 'react-icons/io5';
 function Sidebar() {
 
     // this.setState({user: this.props.location.state.name});
-    console.log("side",this.props.location.state.name);
+    // console.log("side",this.props.location.state.name);
     const[sidebarState,setsidebar]=useState(false);
     const toggleSidebar=()=>setsidebar(!sidebarState);
 

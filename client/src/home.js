@@ -29,7 +29,7 @@ class Login extends Component
         xx:0,
       }
       this.setxRef=(el)=>{this.xinput=el}
-      this.setRef=(el)=>{this.myRef=el};
+      // this.setRef=(el)=>{this.myRef=el};
       this.handleImagePreview = this.handleImagePreview.bind(this);
       this.handleImagePreview1 = this.handleImagePreview1.bind(this);
       this.handleUpload = this.handleUpload.bind(this);
@@ -78,6 +78,7 @@ class Login extends Component
 
 
         var like_button=document.createElement("button");
+        like_button.className="round-button-circle";
         console.log(this.props.location.state.name in r[i].likers,r[i].likers)
         if( r[i].likers.includes(this.props.location.state.name ))
         {
@@ -142,10 +143,11 @@ class Login extends Component
           }
           // document.getElementById(e.target.parentNode.id+"likes_text").innerHTML= " LIKES :"+;
         }
-        div_post.appendChild(like_button); 
+        
         div_post.appendChild(div_image);
         div_post.appendChild(cap);
         div_post.appendChild(likes_text);
+        div_post.appendChild(like_button); 
         document.getElementById("display_post").appendChild(div_post);
       }
       console.log(r);
@@ -399,7 +401,7 @@ class Login extends Component
       {
           if(this.state.xx!==this.state.filess.length)
           {
-              this.myRef.innerHTML=this.state.filess[this.state.xx].name;
+              // this.myRef.innerHTML=this.state.filess[this.state.xx].name;
               this.setState({
 
                       file: URL.createObjectURL(this.state.filess[this.state.xx])
@@ -408,7 +410,7 @@ class Login extends Component
           else
           {
               this.setState({xx: 0 }) ;
-              this.myRef.innerHTML=this.state.filess[0].name;
+              // this.myRef.innerHTML=this.state.filess[0].name;
               this.setState({
                   file: URL.createObjectURL(this.state.filess[0])
               })
