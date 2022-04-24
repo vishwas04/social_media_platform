@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Login from "./login.js"
 import Home from "./home.js"
 import Signup from "./signup.js"
-import Deregister from "./deregister.js"
+import Myprofile from "./myprofile.js"
 import {BrowserRouter as Router,Route,Link,Switch,Redirect} from "react-router-dom";
 import {PrivateRoute} from "./protect"
 import Sidebar from './components/Sidebar';
@@ -38,7 +38,7 @@ class App extends Component
     <Route exact path="/" component={Login}/>
     <Route exact path="/home" component={Home} />
     <Route exact path="/signup" component={Signup}/>
-    <Route exact path="/deregister" component={Deregister}/>
+    <Route exact path="/myprofile" component={Myprofile}/>
     <Route exact path="/images" component={Images}/>
     <Route exact path="/vidoes" component={Video}/>
     <Route exact path="/aboutus" component={Aboutus}/>

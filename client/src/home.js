@@ -35,6 +35,10 @@ class Login extends Component
       this.handleUpload = this.handleUpload.bind(this);
       this.handleserch = this.handleserch.bind(this);
       this.unfollowhandleserch = this.unfollowhandleserch.bind(this);
+      this.myprofile = this.myprofile.bind(this);
+      this.logout = this.logout.bind(this);
+      
+      
       
       
       // this.opt=this.opt.bind(this);
@@ -159,6 +163,18 @@ class Login extends Component
     });
 
 
+    }
+    myprofile(e)
+    {
+
+      const { match, location, history } = this.props;
+      history.push("/myprofile", { name: this.state.user});
+      
+    }
+    logout(e)
+    {
+      const { match, location, history } = this.props;
+      history.push("/");
     }
     handleserch(e)
     {
@@ -426,15 +442,18 @@ class Login extends Component
        
       return (<div>
         {/* <h1>{this.state.user_}</h1> */}
-              
+    <div style={{position:"absolute",top:"0px",height:"75px" , width:"100%" ,backgroundColor:"orangered"} } >
+      <div style={{position:"absolute",height:"75px" , width:"15%" ,backgroundColor:"yellow" ,cursor: "pointer"}} onClick={this.myprofile} ><h3 style={{textAlign:"center"}}>My Profile</h3></div>
+      <div style={{position:"absolute",height:"75px" , width:"15%" ,left:"42%" ,textAlign:"center" } }><h3 id="username" style={{textAlign:"center",}} >{this.props.location.state.name}</h3></div>
+      <div style={{position:"absolute",height:"75px" , width:"15%" ,right:"0px",backgroundColor:"yellow" ,cursor: "pointer"}} onClick={this.logout} ><h3 style={{textAlign:"center"}}>LOGOUT</h3></div>
+    </div>  
               
     
-    <div style={{ height:"3000px" }} >
-    <Sidebar/>
+    <div style={{height:"3000px" }} >
+    
                
                 <div id = "posting_div" style={{ position:'fixed',height:"50%",width:"25%",bottom:"0px",right:"0px", background : "linear-gradient(300deg,red,orangered 90%)",zIndex:"5",borderRadius: "25px",textalign: "center"}} >
-                  <p id="username_wel" style={{textalign: "center"}}>WELCOME</p>
-                  <p id="username">{this.props.location.state.name}</p>
+                  {/* <p id="username_wel" style={{textalign: "center"}}>WELCOME</p> */}
                   <input id="home_file" type="file" className="button-78" accept="image/*" name="image" onChange={this.handleImagePreview1}  multiple/>
                   <input id="home_caption" className="button-78" name="caption" placeholder="caption" autocomplete="off"/>    
                   <button id="home_prev" type="button" className="button-78"  onClick={this.handleImagePreview}>Preview</button>
@@ -442,18 +461,18 @@ class Login extends Component
                   <img id="home_img" className="button-62"  src={this.state.file} alt="Upload image -> Preview -> Upload" width="300" height="200"/>
                 </div>
                 <br></br>
-                <div id ="display_post"  style={{position:'absolute', left:"30%",height:"3000px" ,width:"40%",background : "black"}}>
+                <div id ="display_post"  style={{position:'absolute', left:"30%",height:"3000px" ,width:"40%",top:"80px",background : "black"}}>
 
                 </div>
                 
-                <div id="follow" style={{ tposition:"absolute",top:"15%" ,width:"15%"} } >
+                <div id="follow" style={{ position:"absolute",top:"80px" ,width:"15%"} } >
                   <input id="home_search" name="home_search_name" placeholder="FOLLOW" onChange={this.handleserch} autocomplete="off" />   
                   <div id="follow_req" style={{width:"100%"}}>
                   </div> 
                 </div>
 
                 
-                <div id="unfollow" style={{position:"absolute", top:"10%",height:"300px"  , width:"15%" ,right:"0px"}} >
+                <div id="unfollow" style={{position:"absolute", top:"80px",height:"300px"  , width:"15%" ,right:"0px"}} >
                   <input id="unfollowhome_search" name="home_search_name" placeholder="UNFOLLOW" onChange={this.unfollowhandleserch} autocomplete="off" />   
                   <div id="unfollowfollow_req" style={{width:"100%"}}>
                   </div> 
