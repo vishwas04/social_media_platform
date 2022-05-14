@@ -477,27 +477,7 @@ class Login extends Component
                   <div id="unfollowfollow_req" style={{width:"100%"}}>
                   </div> 
                 </div>
-              {/* <input id="home_input" type="text" onChange={this.call_search} autocomplete="off"/>
-              <label id="lable_input" htmlFor="home_input"alt="FIND BLOOD DONOR" placeholder="FIND BLOOD DONOR"></label>
-            
-              <br/>
-             <br/>
-              
-              <h3 id="htree">BLOOD GROUP</h3>
-                    <select id="select_"value={this.state.b} onChange={this.opt}>
-                        <option value = "a+">A+</option>
-                        <option value = "a-">A-</option>
-                        <option value = "b+">B+</option>
-                        <option value = "b-">B-</option>
-                          <option value = "o+">O+</option>
-                          <option value = "o-">O-</option>
-                          <option value = "ab+">AB+</option>
-                          <option value = "ab-">AB-</option>
-                    </select>
-            <h3 id="hfour">CORONA RECOVERD</h3>
-              <lable id="lable1">YES</lable><input id="i1"type="radio" name="r1" onChange={this.corona} value={1}/>
-              <lable id="lable2">NO</lable><input id="i2" type="radio" name="r1" onChange={this.corona} value={0} />
-            <div id="result" ></div> */}
+          
     </div>
 
 

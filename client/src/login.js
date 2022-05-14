@@ -61,27 +61,15 @@ class Login extends Component
 
             body:JSON.stringify({email:loing_res})
           })
-          // .then((responseJson) =>{console.log(responseJson)})
           .then((responseJson) => {
             if(responseJson.status==200)
           {
-          // console.log(response);
-          // if(response === "1")
-          // {
-              // var data =response._id.toString();
-              // console.log(data);
-//            auth.demo();
+         
               const { match, location, history } = this.props;
-//            window.location.href ="http://localhost:3000/home";
               auth.login(()=>{
-                              //  Cookies.set("user","loginTrue");
-//                             window.location.href ="http://localhost:3000/home"
-                            //  history.push("/home");
+                             
                              history.push("/home", { name: this.einput.value});
-//                             console.log(history)
                              })
-//                  auth.demo();
-          // }
                             }  
             else alert("Login Failed") ;
             })
